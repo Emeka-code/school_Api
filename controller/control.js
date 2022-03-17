@@ -51,7 +51,15 @@ const getSchool = async(req,res) =>{
 }
 const updateSchool = async (req,res)=>{
     try {
-        const update = await model.findByIdAndUpdate(req.params.id,req.body)
+        const cloud = await cloudinary.uploader.upload(req.file.path);
+        const update = await model.findByIdAndUpdate(req.params.id,{
+            schoolName:req.body.schoolName,
+            schoolLocation:req.body.schoolLocation,
+            image:req.file.path,
+            year:req.body.year,
+            cloud_id:cloud.public_id,
+            cloud_url:cloud.secure_url
+        },{new:true})
         res.status(201).json({
             status:'updated successfully',
             data:update

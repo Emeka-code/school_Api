@@ -1,11 +1,12 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const port = 1001
+const port = process.env.PORT  || 1001
 const router = require('./router/router')
+require('dotenv').config()
 
 
 const app = express()
-const url = 'mongodb://localhost/schoolApi'
+const url = process.env.MONGODB_ATLAS
 mongoose.connect(url).then(()=>{
     console.log('connected')
 }).catch((error)=>{

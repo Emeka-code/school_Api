@@ -12,6 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "cloudinary": "^1.28.1",
+    "dotenv": "^16.0.0",
+    "env": "^0.0.2",
     "express": "^4.17.3",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.6",
